@@ -3,10 +3,9 @@ import { MdLightMode } from "react-icons/md";
 import { IoMoonSharp } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { RiChatNewLine } from "react-icons/ri";
-import { createNewProject } from '../db/ChartoraDB';
-import { getAllProjects } from "../db/ChartoraDB";
 
-function Navbar ({setOpened, selectedID}) {
+
+function Navbar ({setOpened}) {
 
     //Dark or Light mood Selected
     const [mood, setMood] = useState(() => {
@@ -29,39 +28,6 @@ function Navbar ({setOpened, selectedID}) {
         }
     }, []);
 
-/*  const [selectedProjectID, setSelectedProjectID] = useState(null); */
-        const [lastID, setLastID ] = useState (() => {
-            const status = JSON.parse(localStorage.getItem('selectedID')) || null;
-            return status;
-        })
-    
-        useEffect(() => {
-            selectedID(lastID);
-            localStorage.setItem('selectedID', JSON.stringify(lastID));
-        }, [lastID])
-
-
-    //Function to create a new project
-     const handleCreateProject = async () => {
-            const title = prompt("Enter your project title:");
-    
-            if (title && title.trim() !== '') {
-            const newProject = await createNewProject(title.trim());
-            console.log("New project created:", newProject);
-            };
-    
-            const getProject = async () => {
-                const all = await getAllProjects();
-                setLastID(all[all.length - 1].id);
-                console.log(`All projects from the indexeddb: ${all}`);
-            }
-    
-            getProject();
-        };
-
-
-
-
     return (
         <>
         <div className="md:w-[5%] md:relative fixed top-0 z-1 flex md:flex-col md:items-center items-center md:gap-4 md:justify-start bg-backdrop md:bg-transparent justify-between border-b-1 md:border-0 border-stroke left-0 right-0 md:h-[100%] md:py-4 px-2 pt-4 transition-colors duration-500 ease-in-out">
@@ -83,7 +49,7 @@ function Navbar ({setOpened, selectedID}) {
             {!mood ? <IoMoonSharp /> : <MdLightMode/> }
            </button>
 
-           <button onClick={handleCreateProject} className="md:p-3 p-2 px-4 hidden md:flex md:rounded-xl md:hover:bg-accent cursor-pointer md:text-2xl md:text-primary">
+           <button className="md:p-3 p-2 px-4 hidden md:flex md:rounded-xl md:hover:bg-accent cursor-pointer md:text-2xl md:text-primary">
             <RiChatNewLine/>
            </button>
 
