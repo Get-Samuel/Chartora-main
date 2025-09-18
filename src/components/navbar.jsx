@@ -4,9 +4,11 @@ import { IoMoonSharp } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { RiChatNewLine } from "react-icons/ri";
 import { createNewProject } from '../db/ChartoraDB';
+import { getAllProjects } from "../db/ChartoraDB";
 
-function Navbar ({setOpened}) {
+function Navbar ({setOpened, selectedID}) {
 
+    //Dark or Light mood Selected
     const [mood, setMood] = useState(() => {
         const status = JSON.parse(localStorage.getItem('clicked')) || false;
         return status;
@@ -27,14 +29,38 @@ function Navbar ({setOpened}) {
         }
     }, []);
 
-    const handleCreateProject = async () => {
-    const title = prompt("Enter your project title:");
+/*  const [selectedProjectID, setSelectedProjectID] = useState(null); */
+        const [lastID, setLastID ] = useState (() => {
+            const status = JSON.parse(localStorage.getItem('selectedID')) || null;
+            return status;
+        })
+    
+        useEffect(() => {
+            selectedID(lastID);
+            localStorage.setItem('selectedID', JSON.stringify(lastID));
+        }, [lastID])
 
-    if (title && title.trim() !== '') {
-      const newProject = await createNewProject(title.trim());
-      console.log("New project created:", newProject);
-    }
-    };
+
+    //Function to create a new project
+     const handleCreateProject = async () => {
+            const title = prompt("Enter your project title:");
+    
+            if (title && title.trim() !== '') {
+            const newProject = await createNewProject(title.trim());
+            console.log("New project created:", newProject);
+            };
+    
+            const getProject = async () => {
+                const all = await getAllProjects();
+                setLastID(all[all.length - 1].id);
+                console.log(`All projects from the indexeddb: ${all}`);
+            }
+    
+            getProject();
+        };
+
+
+
 
     return (
         <>
