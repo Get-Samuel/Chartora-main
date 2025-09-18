@@ -31,7 +31,7 @@ function Navbar ({setOpened}) {
     return (
         <>
         <div className="md:w-[5%] md:relative fixed top-0 z-1 flex md:flex-col md:items-center items-center md:gap-4 md:justify-start bg-backdrop md:bg-transparent justify-between border-b-1 md:border-0 border-stroke left-0 right-0 md:h-[100%] md:py-4 px-2 pt-4 transition-colors duration-500 ease-in-out">
-           <button onClick={setOpened} className="p-3 md:rounded-xl md:hover:bg-accent cursor-pointer md:text-xl text-2xl text-primary">
+           <button onClick={setOpened} className="p-3 border-1 border-transparent hover:border-stroke md:rounded-xl md:hover:bg-inputbg cursor-pointer md:text-xl text-2xl text-primary transition-all duration-300">
             <TbLayoutSidebarLeftExpand/>
            </button>
 
@@ -45,11 +45,11 @@ function Navbar ({setOpened}) {
                 localStorage.setItem('themed', ( dark ? 'dark' : 'light'))
             }
             }
-            className="p-3 md:rounded-xl md:hover:bg-accent cursor-pointer md:text-xl text-2xl text-primary">
+            className="p-3 border-1 border-transparent hover:border-stroke md:rounded-xl md:hover:bg-inputbg cursor-pointer md:text-xl text-2xl text-primary transition-all duration-300">
             {!mood ? <IoMoonSharp /> : <MdLightMode/> }
            </button>
 
-           <button className="md:p-3 p-2 px-4 hidden md:flex md:rounded-xl md:hover:bg-accent cursor-pointer md:text-2xl md:text-primary">
+           <button className="md:p-3 border-1 border-transparent hover:border-stroke p-2 px-4 hidden md:flex md:rounded-xl md:hover:bg-inputbg cursor-pointer md:text-2xl md:text-primary transition-all duration-300">
             <RiChatNewLine/>
            </button>
 
