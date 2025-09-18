@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-stroke: var(--border);
+  --color-strokethick: var(--strokethick);
+  --color-backdrop: var(--background);
+  --color-primary: var(--primary);
+  --color-hue: var(--text);
+  --color-hightlight: var(--hightlight);
+  --color-accent: var(--accent);
+  --color-cursor: var( --cursor);
+  --color-inputbg: var(--input);
+  --color-light: var(--light);
+}
+
+:root{
+    --background: #E6E6E6;
+    --border: #c6c6c6;
+    --text: #000;
+    --accent: #2e57df18;
+    --hightlight: #d7d7d7;
+    --primary: #233B88;
+    --input: #d2d2d2;
+    --strokethick: #878787;
+    --light: #d7d7d797;
+}
+
+.dark {
+    --background: #212121;
+    --border: #b0b0b042;
+    --strokethick: #b0b0b042;
+    --text: #cccccc;
+    --accent: #2e57df18;
+    --hightlight: #5c5c5c5f;
+    --primary: #2e57df;
+    --input: #303030;
+    --light: #5c5c5c2f; 
+}
+
+
+html, body{
+    width: 100vw;
+    height: 100svh;
+    overflow: hidden;
+    display: grid;
+    place-content: center;
+    background-color: var(--color-backdrop);
+    font-family: "Montserrat", sans-serif;
+    transition: background-color 0.5s ease-in-out;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 2rem;
+  }
+  to {
+    width: 100%; 
+  }
+}
+
+@keyframes collapseWidth {
+  from {
+    width: 22rem;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.expand-width {
+  animation: expandWidth 0.5s ease-in-out forwards;
+  overflow: hidden;
+}
+
+.collapse-width {
+  animation: collapseWidth 0.5s ease-in-out forwards;
+  overflow: hidden;
+}
+
+/* Navpanel contents */
+
+@keyframes contentAppear {
+  from {
+    opacity: 0;
+    
+  }
+  to {
+   opacity: 1;
+  }
+}
+
+.animate-content-appear{
+    animation: contentAppear .2s ease-in-out .3s forwards;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+    
+  }
+  to {
+   opacity: 0;
+  }
+}
+
+.animate-content-disappear{
+    animation: disappear .3s ease-in-out;
+}
+
+.project-container, .platform{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.project-container::-webkit-scrollbar, .platform::-webkit-scrollbar{
+    display: none;
+}
+
+.platform p:nth-child(odd){
+    margin-left: auto;
+}
+
+.platform p:nth-child(even){
+    margin-right: auto;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+.my-spinner {
+    border: 4px solid #ddd;        
+    border-top: 4px solid #3b82f6; 
+    border-radius: 9999px;      
+    width: 3rem;
+    height: 3rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes filePreviewAppear {
+    0% {
+      bottom: 50%;
+      transform: translateY(100%);
+    }
+    100% {
+      bottom: 0;
+      transform: translateY(0);
+    }
+}
+
+.filePreviewAppear {
+    animation: filePreviewAppear 1s forwards;
+    animation-timing-function: cubic-bezier(1,-0.03, 0.29, 1.39) ;
+}
+
+@keyframes promptPreviewAppear {
+    0% {
+      top: -20%;
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
+.promptPreviewAppear {
+    animation: promptPreviewAppear 1s forwards;
+    animation-timing-function: cubic-bezier(1,-0.03, 0.29, 1.39) ;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-80px);
+    }
+
+    100%{
+        transform: translateX(200px);
+    }
+}
+.animate-slide{
+    animation: slide 2s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+
+

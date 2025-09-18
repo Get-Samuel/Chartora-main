@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260.59 288.54">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #279552;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-family: Poppins-Bold, Poppins;
+        font-size: 70px;
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        fill: #85ca9d;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-1" d="m233.06,288.54H26.68c-14.73,0-26.68-11.94-26.68-26.68L.85,26.68C.85,11.94,12.79,0,27.53,0h134.07l98.99,99.64-.85,162.22c0,14.73-11.94,26.68-26.68,26.68Z"/>
+      <path class="cls-3" d="m162.03,0v76.79c0,12.25,9.93,22.18,22.18,22.18h75.54L162.03,0Z"/>
+    </g>
+    <text class="cls-2" transform="translate(56.55 241.9)"><tspan x="0" y="0">CSV</tspan></text>
+  </g>
+</svg>
