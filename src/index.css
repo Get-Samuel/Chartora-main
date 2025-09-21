@@ -18,9 +18,9 @@
     --background: #E6E6E6;
     --border: #c6c6c6;
     --text: #000;
-    --accent: #2e57df18;
+    --accent: #6a52a22a;
     --hightlight: #d7d7d7;
-    --primary: #233B88;
+    --primary: #6A52A2;
     --input: #d2d2d2;
     --strokethick: #878787;
     --light: #d7d7d797;
@@ -31,9 +31,9 @@
     --border: #b0b0b042;
     --strokethick: #b0b0b042;
     --text: #cccccc;
-    --accent: #2e57df18;
+    --accent: #6a52a22a;
     --hightlight: #5c5c5c5f;
-    --primary: #2e57df;
+    --primary: #6A52A2;
     --input: #303030;
     --light: #5c5c5c2f; 
 }
@@ -146,11 +146,18 @@ html, body{
 
 @keyframes filePreviewAppear {
     0% {
-      bottom: 50%;
+      bottom: 10%;
+      opacity: 0;
       transform: translateY(100%);
     }
+
+    50%{
+      opacity: 0;
+    }
+
     100% {
-      bottom: 0;
+      bottom: 10%;
+      opacity: 100%;
       transform: translateY(0);
     }
 }

@@ -3,6 +3,7 @@ import { MdLightMode } from "react-icons/md";
 import { IoMoonSharp } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { RiChatNewLine } from "react-icons/ri";
+import ChartoraLogo from '/Chartora-Logo-Horizontal.svg';
 
 
 function Navbar ({setOpened}) {
@@ -35,7 +36,7 @@ function Navbar ({setOpened}) {
             <TbLayoutSidebarLeftExpand/>
            </button>
 
-           <h2 className="md:hidden text-hue text-xl font-medium">Chartora</h2>
+           <img src={ChartoraLogo} className="md:hidden w-[25%]"/>
 
            <button onClick={
             () => {
