@@ -66,8 +66,10 @@ function Chatview ({navOpened, showChatview}) {
                 </div>
             </div>
 
-            <FileUpload/>
-            <div className="flex gap-2 border-1 md:w-[60%] border-stroke w-[95%] absolute left-[50%] -translate-x-[50%] md:p-4 md:px-5 p-2 pl-3 bg-inputbg rounded-4xl bottom-[6vh]">
+            <div className="flex flex-col gap-4 md:gap-5 border-1 md:w-[60%] border-stroke w-[95%] absolute left-[50%] -translate-x-[50%] md:p-4 px-3 pb-5 md:pt-6 pt-3 bg-inputbg rounded-4xl bottom-[5vh]">
+                <FileUpload/>
+
+              <div className="flex flex-row w-full flex-nowrap gap-2">
                 <input
                 type="text"
                 className="flex-1 text-hue focus:outline-0 p-2 rounded"
@@ -89,6 +91,7 @@ function Chatview ({navOpened, showChatview}) {
                 >
                 <BsArrowUpCircleFill className="text-4xl text-primary active:scale-95 cursor-pointer"/>
                 </button>
+              </div>
             </div>
         </div>
         </>
