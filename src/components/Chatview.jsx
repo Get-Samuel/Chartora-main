@@ -5,7 +5,7 @@ import { BsArrowUpCircleFill } from "react-icons/bs";
 import { LuFilePlus2 } from "react-icons/lu";
 import WelcomeScreen from "./WelcomeScreen";
 import FileUpload from "./Fileupload";
-
+import Tokens from "./Tokens";
 
 function Chatview ({navOpened, showChatview}) {
     const [messages, setMessages] = useState([]);
@@ -56,29 +56,30 @@ function Chatview ({navOpened, showChatview}) {
 
     return (
         <>
-        <div className={`flex-1 w-[100%] relative h-screen flex flex-col justify-center items-center overflow-hidden md:border-1 md:border-stroke md:h-[100%] md:rounded-xl md:p-4 p-2 transition-colors duration-500 ease-in-out ${!showChatview && 'hidden'}`}>
+        <div className={`flex-1 w-[100%] relative max-h-screen flex flex-col justify-between items-center overflow-hidden md:border-1 md:border-stroke md:h-[100%] md:rounded-xl md:p-4 p-2 transition-colors duration-500 ease-in-out ${!showChatview && 'hidden'}`}>
+            {/* <Tokens/> */}
             {!sent && <WelcomeScreen/>}
-            <div className="flex md:w-[60%] absolute md:top-[5vh] px-2 top-[10vh] bottom-[17vh] items-bottom mx-auto justify-center">
-                <div className="flex-1 overflow-y-scroll no-scrollbar space-y-8 mb-2">
+            <div className="flex flex-1 overflow-y-scroll no-scrollbar space-y-8 md:w-[60%] items-bottom md:mt-[10vh] mt-[15vh] mx-auto justify-center">
+                <div className="flex-1 overflow-y-scroll no-scrollbar space-y-8">
                 {messages.map((msg, idx) => (
                 <MessageBubble key={idx} sender={msg.sender} text={msg.text} />
                 ))}
                 </div>
             </div>
 
-            <div className="flex flex-col gap-4 md:gap-5 border-1 md:w-[60%] border-stroke w-[95%] absolute left-[50%] -translate-x-[50%] md:p-4 px-3 pb-5 md:pt-6 pt-3 bg-inputbg rounded-4xl bottom-[5vh]">
-                <FileUpload/>
+            <div className="flex flex-col gap-4 md:gap-5 border-1 md:w-[60%] border-stroke w-[98%] md:p-4 p-3 md:pb-5 md:pt-6 bg-inputbg rounded-4xl">
+              <FileUpload/>
 
-              <div className="flex flex-row w-full flex-nowrap gap-2">
+              <div className="flex flex-row w-full overflow-hidden flex-nowrap md:gap-2 gap-1">
                 <input
                 type="text"
-                className="flex-1 text-hue focus:outline-0 p-2 rounded"
+                className="flex-1 min-w-0 text-hue focus:outline-0 p-2 rounded"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
                 />
 
-                <button className="text-sm bg-accent md:px-3 p-3 rounded-full flex gap-1 w-fit flex-nowrap flex-row items-center md:text-hue text-primary cursor-pointer">
+                <button className="md:text-sm text-2xl md:px-3 md:bg-accent p-2 rounded-full flex gap-1 w-fit flex-nowrap flex-row items-center md:text-hue text-primary cursor-pointer">
                   <p className="hidden md:block">Upload chart</p><LuFilePlus2/>
                 </button>
 

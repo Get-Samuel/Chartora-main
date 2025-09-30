@@ -46,6 +46,83 @@ export const getProjectById = async (id) => {
   return await db.projects.get(id);
 };
 
+<<<<<<< HEAD
+//Update project session
+export const updateProjectSession = async (projectId,  uploaded, uploading, filePreview) => {
+  try {
+    const project = await db.projects.get(projectId);
+
+    if (!project) {
+      console.error('Project not found with ID:', projectId);
+      return;
+    }
+
+    // Update the session inside the project
+    await db.projects.update(projectId, {
+      sessions: {
+        ...project.sessions,
+        uploaded: uploaded ?? project.sessions.uploaded,
+        uploading: uploading ?? project.sessions.uploading,
+        filePreview: filePreview ?? project.sessions.filePreview,
+      }
+    });
+
+    console.log(`Updated session for project ${projectId}`);
+  } catch (error) {
+    console.error('Failed to update session:', error);
+  }
+};
+
+//get project session 
+export const getProjectSession = async (projectId) => {
+  try {
+    const project = await db.projects.get(projectId);
+
+    if (!project) {
+      console.error('Project not found with ID:', projectId);
+      return null;
+    }
+
+    const session = project.sessions || { uploading: null, uploaded: null, filePreview: null };
+
+    console.log(`Retrieved session for project ${projectId}`, session);
+    return session;
+  } catch (error) {
+    console.error('Failed to get session:', error);
+    return null;
+  }
+};
+
+//This block deletes a projects uploaded File 
+export const deleteProjectFile = async (projectId) => {
+  try {
+    const project = await db.projects.get(projectId);
+
+    if (!project) {
+      throw new Error('Project not found');
+    }
+
+    // Clear the file array
+    await db.projects.update(projectId, { file: [] });
+
+    console.log(`Files deleted for project ${projectId}`);
+  } catch (err) {
+    console.error("Error deleting file:", err);
+  }
+};
+
+//This block saves the chat History to indexeddb
+export const saveChatToDB = async (projectId, newMessages) => {
+  const project = await db.projects.get(projectId);
+  if (!project) return;
+  await db.projects.update(projectId, {
+    ...project,
+    chatHistory: newMessages
+  });
+};
+
+=======
+>>>>>>> recovered-work
 //This block creates a New Project
 db.on('populate', async () => {
   await db.projects.add({
@@ -58,6 +135,12 @@ db.on('populate', async () => {
       filePreview: true,
     },
     chatHistory: [],
-    images: []
+    images: [],
+    usage: {
+      limit: 5, // max allowed prompts
+      used: 0 ,  // how many used
+      lastUsedDate: 'YYYY-MM-DD'
+    }
+
   });
 });

@@ -42,7 +42,7 @@ function HomePage () {
 
                 {!opened && <Navbar setOpened={handleNavbarClick}/>}
                 
-                <Chatview navOpened={navClicked} showChatview={showChatview}/>
+                {/* <Chatview navOpened={navClicked} showChatview={showChatview}/> */}
             </div>
         </>
     );

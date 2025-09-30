@@ -1,10 +1,34 @@
 import { useState, useEffect } from "react";
 import Loading from "./components/Loading";
 import HomePage from "./pages/Homepage";
+import Authpage from "./pages/Authpage";
 import { Routes, Route, Router } from 'react-router-dom';
 
 function App() {
 
+<<<<<<< HEAD
+    //This block fetches the Project from indexeddb & sets the selected project ID
+    const [projects, setProject] = useState([]);
+    const [selectedProjectID, setSelectedProjectID] = useState(null);
+    useEffect(() => {
+
+         const getProject = async () => 
+        {const all = await getAllProjects();
+        setProject(all);
+
+        console.log(`Default Project ID: ${all[0].id}`);
+    
+        //Default project selected
+        if (projects.length > 0) {
+            setSelectedProjectID(all[0].id)
+        }};
+
+        getProject();
+        
+    }, [])
+
+=======
+>>>>>>> recovered-work
 
     //Introductory loading animation
     const [loaded, loadStatus] = useState(true)
@@ -20,7 +44,7 @@ function App() {
     return(
         <>
             <Routes>
-                <Route path='/' element = {loaded ? (<Loading/>) : (<HomePage/>)} />
+                <Route path='/' element = {loaded ? (<Loading/>) : (<Authpage/>)} />
             </Routes>
         </>
     );
