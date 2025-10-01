@@ -22,11 +22,11 @@ function Chatview ({navOpened, showChatview}) {
   // Initialize Gemini client correctly
   // ISSUE: Hardcoded key + wrong SDK usage caused "not connected" errors.
   // FIX: Read from Vite env if present, else fall back to provided key.
-  const apiKey = import.meta.env?.VITE_GENAI_API_KEY || "AIzaSyAlH-BHXbjHo6H0lhOL1VoApG872djraFU";
+  const apiKey = import.meta.env?.VITE_GEMINI_API_KEY || "AIzaSyBKVaQqauTQwHJzJp3b8pnDHEvn8Pu-Qq4";
   const genAI = new GoogleGenerativeAI(apiKey);
   // The correct way is to get a model instance first, then call generateContent
   // NOTE: Using a widely-available model for stability.
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   const sendMessage = async () => {
     if (!input.trim()) return;
