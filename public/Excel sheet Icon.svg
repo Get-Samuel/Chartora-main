@@ -1,49 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 259.74 360.64">
-  <defs>
-    <style>
-      .cls-1, .cls-2 {
-        fill: #fff;
-      }
-
-      .cls-3 {
-        fill: #279552;
-      }
-
-      .cls-2 {
-        font-family: Poppins-Bold, Poppins;
-        font-size: 70px;
-        font-weight: 700;
-      }
-
-      .cls-4 {
-        fill: #85ca9d;
-      }
-
-      .cls-5 {
-        fill: url(#linear-gradient);
-      }
-    </style>
-    <linearGradient id="linear-gradient" x1="178.58" y1="145.86" x2="265.49" y2="189.42" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#46a56f"/>
-      <stop offset=".3" stop-color="#46a56f" stop-opacity=".69"/>
-      <stop offset="1" stop-color="#46a56f" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
-    <g>
-      <g>
-        <path class="cls-3" d="m233.06,360.64H26.68c-14.73,0-26.68-11.94-26.68-26.68V26.68C0,11.94,11.94,0,26.68,0h134.07l98.99,99.64v234.32c0,14.73-11.94,26.68-26.68,26.68Z"/>
-        <polygon class="cls-5" points="259.64 291.18 162.42 81.44 226.11 65 259.64 98.96 259.64 291.18"/>
-        <path class="cls-4" d="m161.18,0v76.79c0,12.25,9.93,22.18,22.18,22.18h75.54L161.18,0Z"/>
-      </g>
-      <text class="cls-2" transform="translate(41.01 203.75)"><tspan x="0" y="0">XLSX</tspan></text>
-      <rect class="cls-1" x="44.1" y="227.82" width="70.71" height="15.43" rx="7.71" ry="7.71"/>
-      <rect class="cls-1" x="144.93" y="227.82" width="70.71" height="15.43" rx="7.71" ry="7.71"/>
-      <rect class="cls-1" x="44.1" y="255.64" width="70.71" height="15.43" rx="7.71" ry="7.71"/>
-      <rect class="cls-1" x="144.93" y="255.64" width="70.71" height="15.43" rx="7.71" ry="7.71"/>
-      <rect class="cls-1" x="44.1" y="283.46" width="70.71" height="15.43" rx="7.71" ry="7.71"/>
-      <rect class="cls-1" x="144.93" y="283.46" width="70.71" height="15.43" rx="7.71" ry="7.71"/>
-    </g>
-  </g>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Excel Icon -->
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="#217346" stroke="#1B5E20" stroke-width="2"/>
+  <text x="32" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">XLSX</text>
+  <rect x="12" y="12" width="8" height="8" fill="white" opacity="0.8"/>
+  <rect x="22" y="12" width="8" height="8" fill="white" opacity="0.6"/>
+  <rect x="32" y="12" width="8" height="8" fill="white" opacity="0.8"/>
+  <rect x="42" y="12" width="8" height="8" fill="white" opacity="0.6"/>
+  <rect x="12" y="22" width="8" height="8" fill="white" opacity="0.6"/>
+  <rect x="22" y="22" width="8" height="8" fill="white" opacity="0.8"/>
+  <rect x="32" y="22" width="8" height="8" fill="white" opacity="0.6"/>
+  <rect x="42" y="22" width="8" height="8" fill="white" opacity="0.8"/>
 </svg>

@@ -26,103 +26,119 @@ export const createNewProject = async (title) => {
     return {...newProject, id};
 }
 
-//This block deletes a project
-export const deleteProject = async (projectId) => {
-  await db.projects.delete(projectId);
-};
-
-//This block updates the title of a project
-export const handleEditTitle = async (projectID, newTitle) => {
-  await db.projects.update(projectID, { title: newTitle });
-}
-
-//This block loads all project 
-export const getAllProjects = async () => {
-  return await db.projects.toArray();
-};
-
 //This block loads 1 project only 
 export const getProjectById = async (id) => {
   return await db.projects.get(id);
 };
 
-<<<<<<< HEAD
-//Update project session
-export const updateProjectSession = async (projectId,  uploaded, uploading, filePreview) => {
+//This block updates session data
+export const updateSession = async (projectId, sessionData) => {
   try {
     const project = await db.projects.get(projectId);
-
     if (!project) {
       console.error('Project not found with ID:', projectId);
       return;
     }
 
-    // Update the session inside the project
     await db.projects.update(projectId, {
       sessions: {
         ...project.sessions,
-        uploaded: uploaded ?? project.sessions.uploaded,
-        uploading: uploading ?? project.sessions.uploading,
-        filePreview: filePreview ?? project.sessions.filePreview,
+        ...sessionData
       }
     });
 
-    console.log(`Updated session for project ${projectId}`);
+    console.log(`Session updated for project ${projectId}`);
   } catch (error) {
     console.error('Failed to update session:', error);
   }
 };
 
-//get project session 
-export const getProjectSession = async (projectId) => {
+//This block stores a file to a project
+export const storeFile = async (file, projectId) => {
   try {
     const project = await db.projects.get(projectId);
-
     if (!project) {
       console.error('Project not found with ID:', projectId);
-      return null;
+      return;
     }
 
-    const session = project.sessions || { uploading: null, uploaded: null, filePreview: null };
+    // Store file data
+    const fileData = {
+      name: file.name,
+      size: file.size,
+      type: file.type,
+      lastModified: file.lastModified,
+      data: await file.arrayBuffer()
+    };
 
-    console.log(`Retrieved session for project ${projectId}`, session);
-    return session;
+    await db.projects.update(projectId, {
+      file: [fileData]
+    });
+
+    console.log(`File stored for project ${projectId}`);
   } catch (error) {
-    console.error('Failed to get session:', error);
-    return null;
+    console.error('Failed to store file:', error);
   }
 };
 
-//This block deletes a projects uploaded File 
-export const deleteProjectFile = async (projectId) => {
+//This block extracts files from a project
+export const extractProjectFiles = async (projectId) => {
   try {
     const project = await db.projects.get(projectId);
-
     if (!project) {
-      throw new Error('Project not found');
+      console.error('Project not found with ID:', projectId);
+      return [];
     }
 
-    // Clear the file array
-    await db.projects.update(projectId, { file: [] });
-
-    console.log(`Files deleted for project ${projectId}`);
-  } catch (err) {
-    console.error("Error deleting file:", err);
+    return project.file || [];
+  } catch (error) {
+    console.error('Failed to extract files:', error);
+    return [];
   }
 };
 
-//This block saves the chat History to indexeddb
-export const saveChatToDB = async (projectId, newMessages) => {
-  const project = await db.projects.get(projectId);
-  if (!project) return;
-  await db.projects.update(projectId, {
-    ...project,
-    chatHistory: newMessages
-  });
+//This block adds a message to chat history
+export const addMessage = async (projectId, message) => {
+  try {
+    const project = await db.projects.get(projectId);
+    if (!project) {
+      console.error('Project not found with ID:', projectId);
+      return;
+    }
+
+    const updatedHistory = [...(project.chatHistory || []), message];
+    await db.projects.update(projectId, {
+      chatHistory: updatedHistory
+    });
+
+    console.log(`Message added to project ${projectId}`);
+  } catch (error) {
+    console.error('Failed to add message:', error);
+  }
 };
 
-=======
->>>>>>> recovered-work
+//This block updates session data
+export const updateSession = async (projectId, sessionData) => {
+  try {
+    const project = await db.projects.get(projectId);
+    if (!project) {
+      console.error('Project not found with ID:', projectId);
+      return;
+    }
+
+    await db.projects.update(projectId, {
+      sessions: {
+        ...project.sessions,
+        ...sessionData
+      }
+    });
+
+    console.log(`Session updated for project ${projectId}`);
+  } catch (error) {
+    console.error('Failed to update session:', error);
+  }
+};
+
 //This block creates a New Project
 db.on('populate', async () => {
   await db.projects.add({

@@ -15,7 +15,7 @@ function SignUp ({access}) {
 
         <>
 
-            <div className="flex flex-col items-center gap-3 w-[30vw]">
+            <div className="flex w-full flex-col items-center gap-3 md:w-[30vw]">
                 <div className="flex place-content-center mb-[2vh]">
                     <img src={ChartoraLogo} className="w-[60%]" alt="" />
                 </div>

@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { db, storeFile, extractProjectFiles } from '../db/ChartoraDB';
 
 export const useUploadStore = create((set) => ({
   file: null,
@@ -7,7 +8,6 @@ export const useUploadStore = create((set) => ({
   clearFile: () => set({ file: null }),
 }));
 
-<<<<<<< HEAD
 export const getSessionStatus = async (projectID) => {
   const project = await db.projects.get(projectID);
   return project?.sessions || { uploaded: true, uploading: false };
@@ -51,6 +51,4 @@ export const processAndStoreFile = async (file, agent, setFile) => {
   }
 };
 
-=======
->>>>>>> recovered-work
 

@@ -7,7 +7,7 @@ import WelcomeScreen from "./WelcomeScreen";
 import FileUpload from "./Fileupload";
 import Tokens from "./Tokens";
 
-function Chatview ({navOpened, showChatview}) {
+function Chatview ({showChatview}) {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [sent, setSent] = useState (() => {
@@ -57,7 +57,7 @@ function Chatview ({navOpened, showChatview}) {
     return (
         <>
         <div className={`flex-1 w-[100%] relative max-h-screen flex flex-col justify-between items-center overflow-hidden md:border-1 md:border-stroke md:h-[100%] md:rounded-xl md:p-4 p-2 transition-colors duration-500 ease-in-out ${!showChatview && 'hidden'}`}>
-            {/* <Tokens/> */}
+            <Tokens/>
             {!sent && <WelcomeScreen/>}
             <div className="flex flex-1 overflow-y-scroll no-scrollbar space-y-8 md:w-[60%] items-bottom md:mt-[10vh] mt-[15vh] mx-auto justify-center">
                 <div className="flex-1 overflow-y-scroll no-scrollbar space-y-8">

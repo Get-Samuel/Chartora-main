@@ -12,7 +12,7 @@ function SignIn ({access}) {
 
     return(
         <>
-            <div className="flex flex-col items-center gap-8 w-[30vw]">
+            <div className="flex w-full flex-col items-center gap-8 md:w-[30vw]">
                 <div className="flex place-content-center mb-[2vh]">
                                     <img src={ChartoraLogo} className="w-[60%]" alt="" />
                 </div>

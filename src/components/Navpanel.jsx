@@ -4,12 +4,11 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { useState } from "react";
 import ChartoraLogo from '/Chartora-Logo-Horizontal.svg';
 
-function Navpanel ({setOpened, navOpened}) {
+function Navpanel ({setOpened}) {
     const [isClosing, setIsClosing] = useState(false);
 
     const handleClose = () => {
         setIsClosing(true);
-        navOpened(true)
         
         // Trigger content disappear animation
         const buttonDiv = document.querySelector('.button-div');

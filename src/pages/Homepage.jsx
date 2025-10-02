@@ -7,7 +7,6 @@ import { useSwipeable } from 'react-swipeable';
 function HomePage () {
     //is the navbar opened or closed?
     const [opened, setOpened] = useState(false);
-    const [navClicked, setNavClicked] = useState(false);
     const [showChatview, setShowChatview] = useState(true);
 
     //handles swipeable Function
@@ -36,13 +35,11 @@ function HomePage () {
     return (
         <>
             <div {...handlers} className="flex md:flex-row md:gap-2 w-screen h-screen md:w-[99vw] md:h-[98svh]">
-                {opened && <Navpanel navOpened={(e) => {
-                    setNavClicked(e)
-                }} setOpened={handleNavpanelClose}/>}
+                {opened && <Navpanel setOpened={handleNavpanelClose}/>}
 
                 {!opened && <Navbar setOpened={handleNavbarClick}/>}
                 
-                {<Chatview navOpened={navClicked} showChatview={showChatview}/>}
+                {<Chatview showChatview={showChatview}/>}
             </div>
         </>
     );

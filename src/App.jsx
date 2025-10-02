@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Loading from "./components/Loading";
 import HomePage from "./pages/Homepage";
 import Authpage from "./pages/Authpage";
-import { Routes, Route, Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
     return(
         <>
             <Routes>
-                <Route path='/' element = {loaded ? (<Loading/>) : (<HomePage/>)} />            </Routes>
+                <Route path='/' element = {loaded ? (<Loading/>) : (<Authpage/>)} /></Routes>
         </>
     );
 }

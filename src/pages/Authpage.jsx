@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 
@@ -7,7 +7,7 @@ function Authpage (){
 
     return(
         <>
-            <div className="p-4 bg-white w-screen h-screen grid place-content-center">
+            <div className="p-4 bg-white w-screen h-screen flex items-center justify-center">
             {SignedIn ? 
                 <SignIn access={(e) => {
                     SetSignedIn(e);

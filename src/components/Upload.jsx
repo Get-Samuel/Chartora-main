@@ -3,55 +3,38 @@ import xlsx from '/xlsx.png';
 import pdf from '/pdf-file.png';
 import { useDropzone } from 'react-dropzone';
 import { RiErrorWarningLine } from "react-icons/ri";
-import { useEffect, useState, useCallback } from 'react';
-import { storeFile, getAllProjects, extractProjectFiles, updateSession } from '../db/ChartoraDB';
-import { useUploadStore,  processAndStoreFile } from '../utils/globalFunctions';
+import { useState, useCallback } from 'react';
+import { useUploadStore, processAndStoreFile } from '../utils/globalFunctions';
 
-function Upload ({upload,  onProgress, agent}) {
+function Upload ({upload, onProgress, agent}) {
     const [isDragActive, setIsDragActive] = useState(false);
 
-        const setFile = useUploadStore((state) => state.setFile);
+    const setFile = useUploadStore((state) => state.setFile);
 
-        const onDrop = useCallback((acceptedFiles) => {
+    const onDrop = useCallback((acceptedFiles) => {
         setIsDragActive(false);
-        // Handle file upload
-        console.log('Files:', acceptedFiles);
-
         const file = acceptedFiles[0];
         if (!file) return;
 
-        //reusable file logic here
+        // Simple file processing
         processAndStoreFile(file, agent, setFile);
-
-        if(file){
-            setTimeout( async () => {
-                upload();
-
-                await updateSession(agent, {
-                uploaded: false,
-                uploading: false,
-                });
-
-            }, 200);
+        
+        if (upload) {
+            upload();
         }
 
-        if (!file) return;
-
-        let uploaded = 0;
-        const fileSize = file.size;
-        const chunkSize = fileSize / 100;
-
-        const simulateUpload = setInterval(() => {
-        uploaded += chunkSize;
-        const progress = Math.min((uploaded / fileSize) * 100, 100);
-        onProgress(progress);
-
-        if (progress >= 100) {
-            clearInterval(simulateUpload);
+        // Simple progress simulation if callback provided
+        if (onProgress) {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                onProgress(progress);
+                if (progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 100);
         }
-        }, 200);
-
-        }, [onProgress]);
+    }, [onProgress, agent, setFile, upload]);
 
     const MAX_FILE_SIZE_MB = 5;
 
@@ -75,15 +58,6 @@ function Upload ({upload,  onProgress, agent}) {
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': [],
     },
     });
-
-    /*  //Set the file for Zustand
-    const extractFile = async () => {
-        const fileDB = await extractProjectFiles(agent);
-        setFile(fileDB);
-        console.log(fileDB);
-    }
-
-    extractFile(); */
 
     return(
     <>
